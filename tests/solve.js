@@ -13,16 +13,16 @@ QUnit.module('Тестируем функцию solve', function () {
 		assert.strictEqual(solve('( x + 1 )/3', 2), 1);
 		assert.strictEqual(solve('xxx', 3), 'error: variable wrong name');
 		assert.strictEqual(solve('xx', 3), 'error: variable wrong name');
-		assert.strictEqual(solve('1 - a - x', 3), 'error');
-		assert.strictEqual(solve('1 - a - a', 3), 'error');
-		assert.strictEqual(solve('a', 3), 'error');
-		assert.strictEqual(solve('xa', 3), 'error');
+		assert.strictEqual(solve('1 - a - x', 3), 'error: equation wrong');
+		assert.strictEqual(solve('1 - a - a', 3), 'error: equation wrong');
+		assert.strictEqual(solve('a', 3), 'error: equation wrong');
+		assert.strictEqual(solve('xa', 3), 'error: equation wrong');
 		assert.strictEqual(solve(2322, 3), 'error: equation wrong type');
 		assert.strictEqual(solve('x', '2'), 2);
 		assert.strictEqual(solve({equation: "test", x: 30 }, 3), 'error: equation wrong type');
 		assert.strictEqual(solve(null, 3), 'error: equation wrong type');
-		assert.strictEqual(solve('x', 'x'), 'error');
+		assert.strictEqual(solve('x', 'x'), 'error: x wrong');
 		assert.strictEqual(solve('x', null), 'error: x wrong type');
-
+		assert.strictEqual(solve('x', 2.3), 'error: x is not integer');
 	});
 });
