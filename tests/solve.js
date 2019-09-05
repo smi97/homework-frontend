@@ -4,6 +4,7 @@ QUnit.module('Тестируем функцию solve', function () {
 	QUnit.test('solve работает правильно ', function (assert) {
 		let obj = {equation: "test",
 			x: 30 };
+		let nullTest = null;
 		assert.strictEqual(solve('x + 1', 1), 2);
 		assert.strictEqual(solve('2 + x - 1', 5), 6);
 		assert.strictEqual(solve('2 * x - 1', 5), 9);
@@ -21,6 +22,10 @@ QUnit.module('Тестируем функцию solve', function () {
 		assert.strictEqual(solve('a', 3), 'error');
 		assert.strictEqual(solve('xa', 3), 'error');
 		assert.strictEqual(solve(2322, 3), 2322);
+		assert.strictEqual(solve('x', '2'), 2);
 		assert.strictEqual(solve(obj, 3), 'error');
+		assert.strictEqual(solve(nullTest, 3), 'error');
+		assert.strictEqual(solve('x', 'x'), 'error');
+
 	});
 });
