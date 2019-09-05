@@ -6,7 +6,7 @@ const solve = (equation, x) => {
     }
 
     if(/^[x\d+\-*()/ ]*$/.test(equation.toString())) { // проверяем, что выражение содержит только цифры и знаки
-        return (new Function(`x`, ` console.log(${equation}); return ${equation}`)(x)); // вычисляем выражение
+        return new Function(`x`, `return ${equation}`)(x); // вычисляем выражение
     }
     return 'error';
 }
